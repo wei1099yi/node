@@ -1,13 +1,1 @@
-
-[
-  {
-  "name": "张三0",
-  "message": "今天天气不错0！",
-  "dateTime": "2015-10-16"
-},
-{
-  "name": "张三1",
-  "message": "今天天气不错1！",
-  "dateTime": "2015-10-16"
-}
-]
+[{"name":"张三0","message":"今天天气不错0！","dateTime":"2015-10-16"},{"name":"张三1","message":"今天天气不错1！","dateTime":"2015-10-16"},{"name":"发顺丰发","message":"发撒","dateTime":"2020-06-17"},{"name":"嘿嘿","message":"发放","dateTime":"2020-06-17"},{"name":"卡","message":"451"},{"name":"python","message":"更多"}]
