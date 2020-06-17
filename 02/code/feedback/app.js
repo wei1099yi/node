@@ -82,6 +82,17 @@ http
         var comments = JSON.parse(data.toString());
         // parseObj.query 就是用户提交的评论组成的对象
         var comment = parseObj.query;
+        var today = new Date();
+        var m = checkTime(today.getMonth() + 1);
+        var d = checkTime(today.getDate());
+        function checkTime(i) {
+          if (i < 10) {
+            i = "0" + i;
+          }
+          return i;
+        }
+
+        comment.dateTime = today.getFullYear() + "-" + m + "-" + d;
         comments.push(comment);
 
         fs.writeFile(
@@ -90,17 +101,7 @@ http
           (error) => {
             if (error) return;
             console.log("写入成功！");
-            var today = new Date();
-            var m = checkTime(today.getMonth() + 1);
-            var d = checkTime(today.getDate());
-            function checkTime(i) {
-              if (i < 10) {
-                i = "0" + i;
-              }
-              return i;
-            }
 
-            comment.dateTime = today.getFullYear() + "-" + m + "-" + d;
             res.statusCode = 302;
             res.setHeader("Location", "/");
             res.end();
