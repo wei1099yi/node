@@ -38,7 +38,7 @@ var strData = {
 
 fs.readFile('./template.html', (err, data) => {
   // 读取到的数据默认是二进制数据，而 render 只能处理字符串，所以需要转换
-  if(err) return console.log('读取文件失败！');
+  if (err) return console.log('读取文件失败！');
   var ret1 = template.render(data.toString(), strData);
 
   console.log(ret1);
