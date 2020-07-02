@@ -2,6 +2,11 @@
 var express = require('express');
 var app = express();
 
+app.use('/public/', express.static('./public/'))
+
+// 使用主体解析中间件 express.json() 或 express.urlencoded() 才能使用 req.body() 方法获取 post 方式提交的数据
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 // 2. 配置使用 art-template 模板引擎
 // 	app.engine() 的第一个参数表示：当渲染以 .art 后缀名的文件时，使用 art-template 模板引擎
 // 	express-art-template 用来把 art-template 整合到 express 中，虽然不用加载 art-template，但是也必须安装
@@ -28,6 +33,14 @@ app.get('/admin', (req, res) => {
 		]
 
 	});
+})
+app.get('/post', (req, res) => {
+	res.render('post.html');
+})
+// 获取 post 方式提交的数据
+app.post('/post', (req, res) => {
+	console.log(req.body);
+	res.json(req.body)  // 响应 JSON 数据，使用的是JSON.stringify() 方法
 })
 // 如果要修改默认的 views 路径，则用以下代码
 // app.set('view', render函数的默认路径) 注意：第一个参数的名称必须是 views，不可更改 
